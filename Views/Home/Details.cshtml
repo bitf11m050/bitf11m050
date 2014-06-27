@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Details";
+}
+
+<head>
+    <title></title>
+
+    <link href="~/Content/bootstrap.css"  rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootrap.min.js"></script>
+    <link href="~/Content/boostrap.min.css" rel="stylesheet" />
+    <style>
+        .container {
+            margin-top: 20px;
+            width: 960px;
+        }
+    </style>
+
+}
+</head>
+<body>
+
+    <div class="container">
+          		
+  <!-- main slider carousel -->
+  <div class="row-fluid">
+    <div class="span12" id="slider">
+      <div class="row-fluid">
+        <div class="span8" id="carousel-bounding-box">
+          <div id="mCarousel" class="carousel slide">
+            
+            <!-- main slider carousel items -->
+            <div class="carousel-inner">
+              <div class="active item" data-slide-number="1">
+                <img src="~/ProductPhotos/@Model.ImageUrl" alt="@Model.Name">
+              </div>
+              <div class="item" data-slide-number="2">
+                <img src="~/ProductPhotos/@Model.ImageUrl2"  alt ="@Model.Name">
+              </div>
+              <div class="item" data-slide-number="3">
+                <img src="~/ProductPhotos/@Model.ImageUrl3" alt="@Model.Name">
+              </div>
+               
+            </div>
+            
+            <!-- main slider carousel nav controls -->
+            <a class="carousel-control left" href="#mCarousel" data-slide="prev">‹</a>
+            <a class="carousel-control right" href="#mCarousel" data-slide="next">›</a>
+          </div>
+        </div>
+        
+        <!-- main slider carousel info text -->
+        <div class="span4" id="carousel-text"></div>
+        
+        <!-- main slider carousel info text items -->
+        <div style="display: none;" id="slide-content">
+          <div id="slide-content-0">
+            <h2>@Model.Name</h2>
+            <h4>@Model.Details</h4>
+                        <h3>PRICE  :  Rs. @Model.Price</h3><br />
+         
+             <p><a href="/Home/About/ " class ="btn btn-primary" role="button"> Back</a>
+                                <a href="/Home/AddToCart/@Model.Id" class="btn btn-default" role="button"> Add to Cart</a>
+                            </p>  
+              
+            </div>
+                  </div>
+      </div>
+      
+    </div>
+  </div> <!--/main slider carousel-->
+  
+  
+  <!-- thumb navigation carousel -->
+  
+</div>
+    <script>
+
+        $('#mCarousel').carousel({
+            interval: 0
+        });
+
+        $('#carousel-text').html($('#slide-content-0').html());
+
+        //Handles the carousel thumbnails
+        $('[id^=carousel-selector-]').click(function () {
+            var id_selector = $(this).attr("id");
+            var id = id_selector.substr(id_selector.length - 1);
+            var id = parseInt(id);
+            $('#mCarousel').carousel(id);
+        });
+
+        // When the carousel slides, auto update the text
+        $('#mCarousel').on('slid', function (e) {
+            var id = $('.item.active').data('slide-number');
+            $('#carousel-text').html($('#slide-content-' + id).html());
+        });
+    </script>
+
+</body>

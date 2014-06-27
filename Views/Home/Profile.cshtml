@@ -1,0 +1,63 @@
+﻿@model MvcApplication8.Models.User
+@{
+    ViewBag.Title = "Profile";
+    Layout = null;
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<head>
+    <title></title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    
+    <script src="~/bootstrap.min.js"></script>
+    <script src="~/Scripts/Bootstrap.js"></script>
+</head>
+
+<body><br><br>
+<div class="container-fluid well span6">
+	<div class="row-fluid">
+        <div class="span2" >
+		    <img src="~/UserPhotos/@Model.Photo" class="col-md-6 h5" >
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#dive').hide();
+
+                $('#a1').click(function () {
+
+                    $('#dive').show();
+                });
+
+            });
+
+        </script>
+        <div class="span8">
+            <h2>@Model.FirstName</h2>
+            <h3>Username: @Model.UserName</h3>
+            <h6>Email : @Model.Email</h6>
+           
+            <a id="a1" role="button">More </a>
+            <div id="dive">
+                <h6>City:  @Model.City</h6>
+            <h6>Country : @Model.Country</h6>
+                <h6>Address : @Model.Address</h6>
+            </div>
+        </div>
+        
+        <div class="span2">
+            <div class="btn-group">
+                <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
+                    Action 
+                    <span class="icon-cog icon-white"></span><span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/Home/Modify/@Model.Id"><span class="icon-wrench"></span> Modify</a></li>
+                    <!--<li><a href="#"><span class="icon-trash"></span> Delete</a></li>-->
+                </ul>
+            </div>
+        </div>
+</div>
+</div>
+    </body>

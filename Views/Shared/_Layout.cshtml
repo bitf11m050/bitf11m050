@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/bootstrap.css"  rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+     <link href="~/Content/bootstrap.css" rel="stylesheet">
+   
+
+</head>
+
+<body>
+   
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+
+    <nav class="navbar navbar-inverse" role="navigation">
+            <div class ="navbar-header">
+                <a class="navbar-brand" href="#">My Shopping WebSite</a>
+            </div>
+            <div>
+                <ul class =" nav navbar-nav"> 
+                    <li class ="active"><a href="~/Home/Index">Home</a></></li>
+                    <li><a href="~/Home/About">Buy</a></li>
+                    <li><a href="~/Home/SignUp">SignUp</a></li>
+                    <li><a href="~/Home/SignIn">SignIn</a></li>
+
+               </ul>
+                    <form class ="navbar-form navbar-left pull-right" method="post" action="/Home/SearchResult">
+                        <div class ="form-group">
+                            <input type="text"  name="sbox"  placeholder="search" />
+                             
+                        </div>
+                       <input type ="submit" id="search" class="btn btn-success" value="Search" />
+                    </form>
+                      
+            </div>
+        </nav>
+      @Scripts.Render("~/bundles/jquery")
+   
+    <!---<script>
+        $(document).ready(function () {
+
+            $('#search').click(function () {
+
+                var name = $('#sbox').val();
+                $.getJSON("/Home/SearchResult/?sbox=" + name, function (data) {
+                    if (data) {
+                        
+                        var url = "/Home/Search/?sbox=" + name;
+                        window.location.href = url;
+                    }
+                    else {
+                        alert("No Reults Were Found");
+                    }
+                });
+            });
+
+        });
+    </script> --> 
+    @RenderBody()
+ 
+    
+</body>
+</html>

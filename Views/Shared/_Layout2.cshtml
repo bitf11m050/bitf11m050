@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/bootstrap.css"  rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+     <link href="~/Content/bootstrap.css" rel="stylesheet">
+   
+
+</head>
+
+<body>
+   
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+    <nav class="navbar navbar-inverse" role="navigation">
+            <div class ="navbar-header">
+                <a class="navbar-brand" href="~/Home/Index2">My Shopping WebSite</a>
+            </div>
+            <div>
+                <ul class =" nav navbar-nav"> 
+                    <li class ="active"><a href="~/Home/Index2">Home</a></></li>
+                    <li class ="active"><a href="~/Home/Profile/@ViewBag.id">@ViewBag.Username</a></li>
+                    <li><a href="~/Home/About2/@ViewBag.id">Buy</a></li>
+                    <li><a href="~/Home/Logout">Logout</a></li>
+                    <li><a href="~/Home/ShoppingCart">Items in Your Cart : @ViewBag.CartCount</a></li>
+ 
+               </ul>
+                    <form class ="navbar-form navbar-left pull-right" role="Search">
+                        <div class ="form-group">
+                            <input type="text" class="form-control" placeholder="search" />
+                             
+                        </div>
+                       <button type ="submit" class ="btn btn-success">Search</button>
+                    </form>
+                      
+            </div>
+        </nav>
+    @RenderBody()
+ 
+    
+</body>
+</html>

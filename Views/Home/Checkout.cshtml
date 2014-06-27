@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Checkout";
+    Layout = null;
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    }
+
+
+
+<h1> Thanks For Shopping!</h1>
+<h3> Your Order will be mailed at the Address : @ViewBag.Address</h3>
+<h3> Total Bill :Rs. @ViewBag.total</h3>
+
+<a href="/Home/About2/@ViewBag.Id" role="button">BackToMain</a>

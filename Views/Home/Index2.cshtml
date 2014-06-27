@@ -1,0 +1,182 @@
+﻿@{
+    ViewBag.Title = "Index2";
+    Layout = null;
+}
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<head>
+    <title></title>
+    <link href="~/Content/bootstrap.css"  rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/boostrap.min.css" rel="stylesheet" />
+
+    
+
+<!--#####################
+Additional Styles (required)
+######################-->
+<style>
+html,body {
+	height:100%;
+	width:100%;
+	position:relative;
+}
+#background-carousel{
+	position:fixed;
+	width:100%;
+	height:100%;
+	z-index:-1;
+}
+.carousel,
+.carousel-inner {
+	width:100%;
+	height:100%;
+	z-index:0;
+	overflow:hidden;
+}
+.item {
+	width:100%;
+	height:100%;
+	background-position:center center;
+	background-size:cover;
+	z-index:0;
+}
+
+#content-wrapper {
+	position:absolute;
+	z-index:1 !important;
+	min-width:100%;
+	min-height:100%;
+}
+</style>
+
+
+    </head>
+
+<body>
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-950065-32']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+</script>
+<!-- Analytics Code -->
+
+<div id="background-carousel">
+    <div id="myCarousel1" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="item active" style="background-image:url(http://placehold.it/1600x800/)"></div>
+        <div class="item" style="background-image:url(http://placehold.it/1600x800/)"></div>
+        <div class="item" style="background-image:url(http://placehold.it/1600x800/)"></div>  
+      </div>
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myCarousel1').carousel({
+            pause: 'none'
+        })
+    });
+</script>
+
+
+    <div class="container">
+
+		<h1>WELLCOME  @ViewBag.x
+		</h1>
+		
+		<div class="row">
+		<!-- thumb navigation carousel -->
+		    <div class="col-md-3 hidden-sm hidden-xs" id="slider-thumbs">
+				<!-- thumb navigation carousel items -->
+				<ul class="list-inline">
+					<li class="col-md-4 h5"><a id="carousel-selector-0" class="selected"><img src="~/ProductPhotos/siberia.png" class="img-responsive"></a></li>
+					<li class="col-md-4 h5"><a id="carousel-selector-1"><img src="~/ProductPhotos/sensie.jpg" class="img-responsive"></a></li>
+					<li class="col-md-4 h5"><a id="carousel-selector-2"><img src="~/ProductPhotos/senhieser.jpg" class="img-responsive"></a></li>
+					<li class="col-md-4 h5"><a id="carousel-selector-3"><img src="~/ProductPhotos/fnaticmousepad.jpg" class="img-responsive"></a></li>
+					<li class="col-md-4 h5"><a id="carousel-selector-4"><img src="~/ProductPhotos/mamba.jpg" class="img-responsive"></a></li>
+					<li class="col-md-4 h5"><a id="carousel-selector-5"><img src="~/ProductPhotos/siberia.jpg" class="img-responsive"></a></li>
+					<li class="col-md-4 h5"><a id="carousel-selector-6"><img src="~/ProductPhotos/Tiamat.png" class="img-responsive"></a></li>
+					<li class="col-md-4 h5"><a id="carousel-selector-7"><img src="~/ProductPhotos/fnaticmousepad3.jpg" class="img-responsive"></a></li>
+				</ul>
+			</div>
+		
+			<div class="col-md-9" id="slider">
+				<div id="myCarousel" class="carousel slide">
+				<!-- main slider carousel items -->
+				<div class="carousel-inner">
+					<div class="active item" data-slide-number="0"><img src="~/ProductPhotos/siberia.png" class="img-responsive"></div>
+					<div class="item" data-slide-number="1"><img src="~/ProductPhotos/sensie.jpg" class="img-responsive"></div>
+					<div class="item" data-slide-number="2"><img src="~/ProductPhotos/senhieser.jpg" class="img-responsive"></div>
+					<div class="item" data-slide-number="3"><img src="~/ProductPhotos/fnaticmousepad.jpg" class="img-responsive"></div>
+					<div class="item" data-slide-number="4"><img src="~/ProductPhotos/mamba.jpg" class="img-responsive"></div>
+					<div class="item" data-slide-number="5"><img src="~/ProductPhotos/siberia.jpg" class="img-responsive"></div>
+					<div class="item" data-slide-number="6"><img src="~/ProductPhotos/Tiamat.png" class="img-responsive"></div>
+					<div class="item" data-slide-number="7"><img src="~/ProductPhotos/fnaticmousepad3.jpg" class="img-responsive"></div>
+				</div>
+				<!-- main slider carousel nav controls --> 
+				<a class="carousel-control left hidden-md hidden-lg" href="#myCarousel" data-slide="prev">‹</a>
+				<a class="carousel-control right hidden-md hidden-lg" href="#myCarousel" data-slide="next">›</a>
+				</div>
+			</div>
+		
+		</div>  
+
+    </div><!-- /.container -->
+    <script>
+        $('#myCarousel').carousel({
+            interval: 4000
+        });
+
+        // handles the carousel thumbnails
+        $('[id^=carousel-selector-]').click(function () {
+            var id_selector = $(this).attr("id");
+            var id = id_selector.substr(id_selector.length - 1);
+            id = parseInt(id);
+            $('#myCarousel').carousel(id);
+            $('[id^=carousel-selector-]').removeClass('selected');
+            $(this).addClass('selected');
+        });
+
+        // when the carousel slides, auto update
+        $('#myCarousel').on('slid', function (e) {
+            var id = $('.item.active').data('slide-number');
+            id = parseInt(id);
+            $('[id^=carousel-selector-]').removeClass('selected');
+            $('[id^=carousel-selector-' + id + ']').addClass('selected');
+        });
+        </script>
+	
+
+   <!-- /.container -->
+
+    <div class="container">
+
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; PUCIT  2014  BITF11M050</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+ 
+</body>
+

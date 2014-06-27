@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+}
+
+<head>
+    <title>
+    </title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+<body>
+
+
+      @Scripts.Render("~/bundles/jquery");
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#b1').click(function () {
+
+                var username = $('#UserName').val();
+                $.getJSON("/Home/CheckUserName?UserName=" + username, function (data) {
+                    if (data) {
+                        $('#result').text("User already exists in database");
+
+                    }
+                    else {
+                        $('#result').text("User Name is available");
+                    }
+                });
+            });
+
+        });
+
+    </script>
+
+    <form  method="post" action="/Home/SaveUser"> 
+       <div class="form-field">
+           First Name<input type="text" placeholder="FirstName" name ="FirstName" id ="FirstName" required/>
+       </div>
+        <div class="form-field">
+           Last Name<input type="text" placeholder="LastName" id="LastName" name="LastName" />
+       </div>
+       
+       <div class="form-field">
+           Email <input type="text" placeholder="emailaddress" id="Email"  name="Email" required"/>
+       </div>
+        <div class="form-field">
+           UserName<input type="text" placeholder="UserName" id="UserName" name="UserName" required/> <input type="button" id="b1" value="check"/>
+            <div id="result"></div>
+       </div>
+    <div class="form-field">
+           Password<input type="password" placeholder="password" id="p1" name="Password" required/>
+       </div>
+@*         <div class="form-field">
+          Re-Enter Password<input type="text" placeholder="password" id="p2" name="Password" required />
+       </div>*@
+
+        <div>  Contact and Address-----           
+    <div class="form-field"> 
+           Mobile Number<input type="text" placeholder="MobileNumber" id="MobileNumber" name ="MobileNumber" required/>
+       </div>
+    <div class="form-field">
+           LandLine<input type="text" placeholder="landling" id="LandLine" name="LandLine" />
+       </div>
+
+            <div class="form-field">
+                <select id ="countrySelector" name="Country">
+                <option value="0">-Select Country-</option>
+          <option value="1">Pakistan</option>
+      <option value="2">France</option>
+  
+</select>
+
+             <div>
+      <select id="citySelector" name="City">
+  <option>-Select City-</option>
+
+      
+  
+</select>
+            </div>
+
+         <div class="form-field">
+           Address<input type="text" placeholder="Address" id="Address" name="Address" />
+       </div>
+
+            Photo:  <input type="text" name ="Photo" id="Photo" />
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#countrySelector").change(function () {
+                        var countryId = $("#countrySelector").val();
+
+                        $("#citySelector option").remove();
+
+
+                        $.getJSON("/Home/GetCities?id=" + countryId, function (data) {
+                            $("#citySelector").append('<option>-Select City-</option>');
+                            $.each(data, function (i, item) {
+                                $("#citySelector").append('<option value=' + item.Id + '>' + item.Name + '</option>');
+                                //alert('Id = ' + item.Id + " Name = " + item.Name);
+                            });
+
+                        });
+
+                    });
+
+                });
+</script>
+            
+             <p>  <input type="file" name ="abc" /></p> 
+ 
+                       <input type="submit" value="Submit" />
+            </div>
+            </div>
+                   </form>
+</body>

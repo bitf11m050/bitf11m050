@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<head>
+    <title></title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet"/>
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+    <body>
+            <div>
+              @foreach( var item in @Model)
+              {
+                    <div class ="col-sm-5 col-md-3">
+                        <div class ="thumbnail">
+                            <a href="/Home/Details/@item.Id"><img src="~/ProductPhotos/@item.ImageUrl"  class ="img-thumbnail" style="height:300px; width:300px" alt="@item.Name" /></a>
+                        </div>
+                        <div class="caption">
+                                 <br />
+                              <p> <h5>Price : Rs. @item.Price</h5>
+                                <a href="/Home/Details/@item.Id " class ="btn btn-primary" role="button"> View Detail</a>
+                                <a href="/Home/AddToCart/@item.Id" class="btn btn-default" role="button"> Add to Cart</a>
+                            </p>
+                            
+                        </div>
+
+                    </div>
+          
+        }
+                </div>
+        
+    </body>
